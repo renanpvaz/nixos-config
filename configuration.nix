@@ -5,11 +5,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-
 
   nixpkgs.config.allowUnfree = true;
 
@@ -32,6 +30,7 @@
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp3s0.useDHCP = true;
+  networking.firewall.allowedTCPPorts = [ 4000 ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -63,12 +62,12 @@
     };
     displayManager.defaultSession = "none+xmonad";
   };
-  
+
 
   # Configure keymap in X11
   services.xserver.layout = "us";
 
-  # Enable fractal art wallpapers 
+  # Enable fractal art wallpapers
   services.fractalart.enable = true;
 
   # Enable sound.
@@ -82,7 +81,7 @@
   users.defaultUserShell = pkgs.fish;
   users.users.renan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
   };
 
@@ -104,7 +103,6 @@
     stack
     asdf
     postgresql
-    lessc
     gnupg
   ];
 
@@ -130,6 +128,8 @@
   #   enableSSHSupport = true;
   };
 
+  virtualisation.docker.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -147,7 +147,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
-
+  system.stateVersion = "21.11"; # Did you read the comment?
 }
 

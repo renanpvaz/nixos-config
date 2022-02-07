@@ -17,16 +17,21 @@
     pkgs.any-nix-shell
     pkgs.ripgrep
     pkgs.zoom-us
+    pkgs.elixir
+    pkgs.inotify-tools
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.python38
   ];
 
   programs.fish = {
     enable = true;
     shellAliases = {
-      g = "g";
+      g = "git";
       glog = "git log --oneline --graph";
       ll = "ls -l";
-      update = "home-manager switch -f ~/.dotfiles/home/home.nix";
-      update-system = "sudo nixos-rebuild switch -I nixos-config=~/.dotfiles/configuration.nix";
+      update-home = "home-manager switch -f /home/renan/.dotfiles/home/home.nix";
+      update-system = "sudo nixos-rebuild switch -I nixos-config=/home/renan/.dotfiles/configuration.nix";
     };
     shellInit = ''
         fish_vi_key_bindings

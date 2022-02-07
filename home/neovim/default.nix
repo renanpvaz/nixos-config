@@ -21,6 +21,8 @@ let
     vim-airline-themes
     awesome-vim-colorschemes
     typescript-vim
+    vim-elixir
+    editorconfig-nvim
   ];
   baseConfig    = builtins.readFile ./config.vim;
   cocSettings   = builtins.toJSON (import ./coc-settings.nix);

@@ -22,6 +22,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+let mapleader = ","
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 "
@@ -35,6 +37,8 @@ endfunction
 
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" List symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -57,4 +61,13 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
 nmap <F6> <Plug>(coc-rename)
+
+" Do code action
+nmap <leader>do <Plug>(coc-codeaction)
+
+map <leader>w :w<CR>
+map <leader>x :x<CR>
+map <leader>q :q<CR>
+
+
 
