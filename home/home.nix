@@ -17,16 +17,23 @@
     pkgs.any-nix-shell
     pkgs.ripgrep
     pkgs.zoom-us
+    pkgs.vscode
+    pkgs.python2
+    pkgs.gnumake
+    pkgs.elmPackages.elm
+    pkgs.elmPackages.elm-test
+    pkgs.elmPackages.elm-format
+    pkgs.elmPackages.elm-language-server
   ];
 
   programs.fish = {
     enable = true;
     shellAliases = {
-      g = "g";
+      g = "git";
       glog = "git log --oneline --graph";
-      ll = "ls -l";
-      update = "home-manager switch -f ~/.dotfiles/home/home.nix";
-      update-system = "sudo nixos-rebuild switch -I nixos-config=~/.dotfiles/configuration.nix";
+      ll = "ls";
+      update = "home-manager switch -f ~/.config/nixos-config/home/home.nix";
+      update-system = "sudo nixos-rebuild switch -I nixos-config=~/.config/nixos-config/configuration.nix";
     };
     shellInit = ''
         fish_vi_key_bindings
@@ -36,10 +43,14 @@
       '';
   };
 
+  programs.vscode = {
+    enable = true;
+  };
+
   imports = [
     ./neovim
-    ./rofi 
-    ./git 
+    ./rofi
+    ./git
   ];
 
   # This value determines the Home Manager release that your

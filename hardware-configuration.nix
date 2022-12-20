@@ -26,4 +26,7 @@
   swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  services.xserver.videoDrivers = [ "nvidia" ];   
+  hardware.opengl.enable = true;
 }

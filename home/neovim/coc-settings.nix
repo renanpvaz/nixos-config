@@ -17,10 +17,16 @@
         };
       };
     };
+    "elmLS" = {
+      "command" = "elm-language-server";
+      "filetypes" = ["elm"];
+      "rootPatterns" = ["elm.json"];
+    };
   };
   "codeLens.enable" = true;
   "coc.preferences.codeLens.enable" = true;
   "coc.preferences.jumpCommand" = "drop";
   "coc.preferences.formatOnSaveFiletypes" = ["*"];
+  "typescript.referencesCodeLens.enable" = false;
 }
 

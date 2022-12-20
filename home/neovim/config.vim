@@ -22,6 +22,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+let mapleader = ","
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 "
@@ -56,5 +58,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <leader>do <Plug>(coc-codeaction)
+
 nmap <F6> <Plug>(coc-rename)
 
+map <leader>w :w<CR>
+map <leader>q :q<CR>
+map <leader>x :x<CR>
