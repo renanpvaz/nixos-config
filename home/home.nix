@@ -32,8 +32,8 @@
       g = "git";
       glog = "git log --oneline --graph";
       ll = "ls";
-      update = "home-manager switch -f ~/.config/nixos-config/home/home.nix";
-      update-system = "sudo nixos-rebuild switch -I nixos-config=~/.config/nixos-config/configuration.nix";
+      update = "home-manager switch -f /home/renan/.config/nixos-config/home/home.nix";
+      update-system = "sudo nixos-rebuild switch -I nixos-config=/home/renan/.config/nixos-config/configuration.nix";
     };
     shellInit = ''
         fish_vi_key_bindings
