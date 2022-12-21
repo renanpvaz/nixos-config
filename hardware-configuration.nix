@@ -29,8 +29,4 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];   
   hardware.opengl.enable = true;
-
-  services.xserver.displayManager.setupCommands = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr --rate 144
-  '';
 }
