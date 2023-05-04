@@ -1,11 +1,14 @@
-set termguicolors
 
 syntax enable
+syntax on
 colorscheme space-vim-dark
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
+filetype plugin on
 
+set termguicolors
+set nocompatible
 set nowrap
 set clipboard+=unnamedplus
 set number
@@ -21,6 +24,7 @@ let g:airline_theme='hybridline'
 let g:airline#extensions#tabline#enabled = 1
 let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:vimwiki_list = [{ 'syntax': 'markdown', 'ext': '.md' }]
 
 let mapleader = ","
 
