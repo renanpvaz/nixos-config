@@ -24,6 +24,8 @@
     pkgs.elmPackages.elm-test
     pkgs.elmPackages.elm-format
     pkgs.elmPackages.elm-language-server
+    pkgs.prismlauncher
+    pkgs.ifwifi
   ];
 
   programs.fish = {
@@ -38,12 +40,13 @@
     shellInit = ''
         fish_vi_key_bindings
       '';
-    promptInit = ''
-        any-nix-shell fish --info-right | source
-      '';
   };
 
   programs.vscode = {
+    enable = true;
+  };
+
+  programs.java = {
     enable = true;
   };
 

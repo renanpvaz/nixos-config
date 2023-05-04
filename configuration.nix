@@ -14,7 +14,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -45,7 +45,7 @@
   # };
   #
   fonts.fonts = with pkgs; [
-    dina-font
+    ibm-plex
   ];
 
   # Enable the X11 windowing system.
@@ -128,6 +128,12 @@
   programs.gnupg.agent = {
     enable = true;
   #   enableSSHSupport = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
   # List services that you want to enable:
