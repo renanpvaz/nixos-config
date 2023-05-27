@@ -12,6 +12,7 @@
   home.homeDirectory = "/home/renan";
 
   home.packages = [
+    pkgs.killall
     pkgs.htop
     pkgs.alacritty
     pkgs.any-nix-shell
@@ -25,7 +26,12 @@
     pkgs.elmPackages.elm-format
     pkgs.elmPackages.elm-language-server
     pkgs.prismlauncher
-    pkgs.ifwifi
+    pkgs.unzip
+    pkgs.kubectl
+    pkgs.minikube
+    pkgs.cargo
+    pkgs.rustc
+    pkgs.rustfmt
   ];
 
   programs.fish = {
@@ -34,7 +40,8 @@
       g = "git";
       glog = "git log --oneline --graph";
       ll = "ls";
-      update = "home-manager switch -f /home/renan/.config/nixos-config/home/home.nix";
+      edit-home = "nvim /home/renan/.config/nixos-config/home/home.nix";
+      update-home = "home-manager switch -f /home/renan/.config/nixos-config/home/home.nix";
       update-system = "sudo nixos-rebuild switch -I nixos-config=/home/renan/.config/nixos-config/configuration.nix";
     };
     shellInit = ''
