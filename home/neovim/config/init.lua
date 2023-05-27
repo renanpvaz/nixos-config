@@ -1,5 +1,6 @@
 require("remap")
 require("telescope-config")
 require("treesitter-config")
+require("lsp-config")
 vim.cmd('colorscheme rose-pine')
 print("Hello!")
