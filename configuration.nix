@@ -45,6 +45,7 @@
   # };
   #
   fonts.fonts = with pkgs; [
+    dina-font
     ibm-plex
   ];
 
@@ -86,6 +87,9 @@
     shell = pkgs.fish;
   };
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -103,24 +107,10 @@
     nodejs
     stack
     asdf
-    postgresql
-    lessc
     gnupg
   ];
 
   environment.variables.EDITOR = "nvim";
-
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_11;
-    authentication = lib.mkForce ''
-     # Generated file; do not edit!
-     # TYPE  DATABASE        USER            ADDRESS                 METHOD
-     local   all             all                                     trust
-     host    all             all             127.0.0.1/32            trust
-     host    all             all             ::1/128                 trust
-    '';
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -154,6 +144,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-
 }
 
