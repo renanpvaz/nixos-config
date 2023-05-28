@@ -1,23 +1,6 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 
-lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  settings = {
-    ['rust-analyzer'] = {},
-  },
-}
-
--- Nix
-lspconfig.nil_ls.setup{}     
--- CSS
-lspconfig.cssls.setup{}
--- HTML
-lspconfig.html.setup{}
--- JSON
-lspconfig.jsonls.setup{}
-
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
@@ -54,4 +37,58 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
+})
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+lspconfig.bashls.setup {}
+lspconfig.cssls.setup {}
+lspconfig.html.setup {}
+lspconfig.jsonls.setup {}
+lspconfig.nil_ls.setup{}     
+
+lspconfig.rust_analyzer.setup {
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
+
+-- Elixir
+lspconfig.elixirls.setup({
+	cmd = { "elixir-ls" },
+	-- Settings block is required, as there is no default set for elixir
+	settings = {
+		elixirLs = {
+			dialyzerEnabled = true,
+			dialyzerFormat = "dialyxir_long",
+		},
+	},
+	capabilities = capabilities,
+})
+
+lspconfig.tsserver.setup({
+	init_options = require("nvim-lsp-ts-utils").init_options,
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+
+		-- Let eslint format
+		client.server_capabilities.document_formatting = false
+		client.server_capabilities.document_range_formatting = false
+
+		local ts_utils = require("nvim-lsp-ts-utils")
+		ts_utils.setup({
+			enable_import_on_completion = true,
+		})
+		ts_utils.setup_client(client)
+	end,
+	capabilities = capabilities,
+})
+-- Web
+-- ESLint
+lspconfig.eslint.setup({
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+		-- Run all eslint fixes on save
+	end,
+	capabilities = capabilities,
 })

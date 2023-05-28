@@ -2,8 +2,6 @@
 
 # TODO
 # leader q,w,x
-# js/ts ls
-# completion
 # multiple cursor
 {
   programs.neovim = {
@@ -19,11 +17,24 @@
       telescope-nvim
       trouble-nvim
       nvim-treesitter.withAllGrammars
-      rose-pine
       # LSP
       nvim-lspconfig
       nvim-lsp-ts-utils
-    ];
+      fidget-nvim
+
+      # Completions
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp-nvim-lsp-signature-help
+      nvim-cmp
+
+      # Snippets
+      luasnip
+      cmp_luasnip
+
+      rose-pine
+   ];
     extraPackages = with pkgs; [
       tree-sitter
       # Elixir
