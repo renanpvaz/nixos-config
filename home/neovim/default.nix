@@ -2,7 +2,6 @@
 
 # TODO
 # leader q,w,x
-# multiple cursor
 {
   programs.neovim = {
     enable = true;
@@ -32,6 +31,10 @@
       # Snippets
       luasnip
       cmp_luasnip
+
+      # Status line
+      lualine-nvim
+      lualine-lsp-progress
 
       rose-pine
    ];
