@@ -32,6 +32,8 @@
     pkgs.cargo
     pkgs.rustc
     pkgs.rustfmt
+    pkgs.elixir
+    pkgs.docker-compose
   ];
 
   programs.fish = {

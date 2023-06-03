@@ -83,11 +83,12 @@
   users.defaultUserShell = pkgs.fish;
   users.users.renan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
   };
 
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.docker.enable = true;
   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
 
   # List packages installed in system profile. To search, run:
