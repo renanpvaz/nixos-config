@@ -8,6 +8,16 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
+ vim.api.nvim_create_autocmd("BufWritePre", {
+     buffer = buffer,
+     callback = function()
+         vim.lsp.buf.format { 
+             async = false,
+             filter = function(client) return client.name ~= "tsserver" end
+         }
+     end
+ })
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -55,7 +65,7 @@ lspconfig.rust_analyzer.setup {
 
 -- Elixir
 lspconfig.elixirls.setup({
-	cmd = { "elixir-ls" },
+	cmd = { "/Users/Renan.Vaz/elixir-ls/release/language_server.sh" },
 	-- Settings block is required, as there is no default set for elixir
 	settings = {
 		elixirLs = {
@@ -83,12 +93,7 @@ lspconfig.tsserver.setup({
 	end,
 	capabilities = capabilities,
 })
+
 -- Web
 -- ESLint
-lspconfig.eslint.setup({
-	on_attach = function(client, bufnr)
-		on_attach(client, bufnr)
-		-- Run all eslint fixes on save
-	end,
-	capabilities = capabilities,
-})
+-- lspconfig.eslint.setup({ on_attach = function(client, bufnr) on_attach(client, bufnr) end, capabilities = capabilities, })

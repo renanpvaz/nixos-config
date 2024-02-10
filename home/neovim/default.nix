@@ -18,7 +18,9 @@
       telescope-nvim
       trouble-nvim
       nvim-treesitter.withAllGrammars
+
       # LSP
+      null-ls-nvim
       nvim-lspconfig
       nvim-lsp-ts-utils
       fidget-nvim
@@ -39,13 +41,14 @@
       lualine-lsp-progress
 
       rose-pine
+
+      vimwiki
+      vim-projectionist
    ];
     extraPackages = with pkgs; [
       tree-sitter
       # Elixir
-      beam.packages.erlang.elixir-ls
-      # Haskell
-      haskellPackages.haskell-language-server
+      # elixir-ls
       # Lua
       sumneko-lua-language-server
       # Nix
